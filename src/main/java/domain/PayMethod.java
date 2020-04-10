@@ -27,10 +27,6 @@ public enum PayMethod {
         return this.number.equals(input);
     }
 
-    public boolean isCard() {
-        return this == CARD;
-    }
-
     public boolean isCash() {
         return this == CASH;
     }
