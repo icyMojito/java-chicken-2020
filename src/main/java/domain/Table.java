@@ -44,4 +44,8 @@ public class Table {
     public Map<Menu, MenuCount> getMenus() {
         return Collections.unmodifiableMap(this.menus);
     }
+
+    public int getNumber() {
+        return number;
+    }
 }
