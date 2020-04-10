@@ -17,4 +17,20 @@ public class Menu {
     public String toString() {
         return category + " " + number + " - " + name + " : " + price + "원";
     }
+
+    private static int getNumberValue(String input) {
+        int inputValue;
+        try {
+            inputValue = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new NumberFormatException("> 존재하지 않는 메뉴 번호를 입력하였습니다.");
+        }
+        return inputValue;
+    }
+
+    public boolean isSameNumber(String input) {
+        int inputValue = getNumberValue(input);
+
+        return this.number == inputValue;
+    }
 }
