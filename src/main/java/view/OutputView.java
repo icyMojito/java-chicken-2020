@@ -2,9 +2,11 @@ package view;
 
 import domain.Feature;
 import domain.Menu;
+import domain.MenuCount;
 import domain.Table;
 
 import java.util.List;
+import java.util.Map;
 
 public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
@@ -61,6 +63,18 @@ public class OutputView {
 
     public static void printError(String message) {
         System.out.println(message);
+        System.out.println();
+    }
+
+    public static void printOrders(Table table) {
+        Map<Menu, MenuCount> menus = table.getMenus();
+
+        System.out.println("메뉴 수량 금액");
+        for (Menu menu : menus.keySet()) {
+            System.out.print(menu.getName() + " ");
+            System.out.print(menus.get(menu).getCount() + " ");
+            System.out.println(menu.getPrice());
+        }
         System.out.println();
     }
 }

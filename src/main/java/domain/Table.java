@@ -1,10 +1,12 @@
 package domain;
 
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
 
 public class Table {
     private final int number;
-    private Map<Menu, MenuCount> menus;
+    private Map<Menu, MenuCount> menus = new HashMap<>();
 
     public Table(final int number) {
         this.number = number;
@@ -37,5 +39,9 @@ public class Table {
 
     public boolean hasOrder() {
         return this.menus.size() != 0;
+    }
+
+    public Map<Menu, MenuCount> getMenus() {
+        return Collections.unmodifiableMap(this.menus);
     }
 }
