@@ -34,4 +34,8 @@ public class Table {
         this.menu = menu;
         this.menuCount = menuCount;
     }
+
+    public boolean hasOrder() {
+        return menu != null && menuCount != null;
+    }
 }
