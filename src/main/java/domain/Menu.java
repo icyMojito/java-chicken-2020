@@ -41,4 +41,8 @@ public class Menu {
     public int getPrice() {
         return price;
     }
+
+    public boolean isChicken() {
+        return this.category.isChicken();
+    }
 }

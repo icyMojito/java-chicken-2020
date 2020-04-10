@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Table {
+    private static final int DISCOUNT_CHICKEN_COUNT = 10;
+    private static final int DISCOUNT_PRICE = 10000;
+
     private final int number;
     private Map<Menu, MenuCount> menus = new HashMap<>();
 
@@ -47,5 +50,34 @@ public class Table {
 
     public int getNumber() {
         return number;
+    }
+
+    public int getPrice() {
+        int price = 0;
+        for (Menu menu : this.menus.keySet()) {
+            price += this.menus.get(menu).getCount() * menu.getPrice();
+        }
+        return price - getDiscountValue();
+    }
+
+    private int getDiscountValue() {
+        int discountValue = 0;
+
+        for (Menu menu : this.menus.keySet()) {
+            if (menu.isChicken()) {
+                int menuCountValue = this.menus.get(menu).getCount();
+                discountValue += (menuCountValue / DISCOUNT_CHICKEN_COUNT) * DISCOUNT_PRICE;
+            }
+        }
+
+        return discountValue;
+    }
+
+    public double getCashDiscountedPrice() {
+        return getPrice() * 0.95;
+    }
+
+    public void completePay() {
+        this.menus = new HashMap<>();
     }
 }
