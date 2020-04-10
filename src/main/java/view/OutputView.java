@@ -73,7 +73,7 @@ public class OutputView {
         for (Menu menu : menus.keySet()) {
             System.out.print(menu.getName() + " ");
             System.out.print(menus.get(menu).getCount() + " ");
-            System.out.println(menu.getPrice());
+            System.out.println(menu.getPrice() * menus.get(menu).getCount());
         }
         System.out.println();
     }
