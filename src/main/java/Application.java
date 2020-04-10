@@ -61,6 +61,8 @@ public class Application {
                     OutputView.printError(e.getMessage());
                 }
             }
+
+            table.saveOrder(menu, menuCount);
         }
 
         if (feature.isPay()) {
