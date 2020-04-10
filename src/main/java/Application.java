@@ -51,6 +51,16 @@ public class Application {
                     OutputView.printError(e.getMessage());
                 }
             }
+
+            MenuCount menuCount;
+            while (true) {
+                try {
+                    menuCount = new MenuCount(InputView.inputMenuCount());
+                    break;
+                } catch (IllegalArgumentException e) {
+                    OutputView.printError(e.getMessage());
+                }
+            }
         }
 
         if (feature.isPay()) {
