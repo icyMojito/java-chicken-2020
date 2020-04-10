@@ -41,6 +41,16 @@ public class Application {
         OutputView.printMenus(menus);
 
         if (feature.isOrder()) {
+            Menu menu;
+            while (true) {
+                try {
+                    String menuNumber = InputView.inputMenuNumber();
+                    menu = MenuRepository.find(menuNumber);
+                    break;
+                } catch (IllegalArgumentException e) {
+                    OutputView.printError(e.getMessage());
+                }
+            }
         }
 
         if (feature.isPay()) {
