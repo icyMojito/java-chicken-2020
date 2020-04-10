@@ -1,21 +1,42 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
 import java.util.List;
 
 public class Application {
-    // TODO 구현 진행
     public static void main(String[] args) {
+        OutputView.printFeatures();
+        Feature feature;
+
+        while (true) {
+            try {
+                feature = Feature.of(InputView.inputFeatureNumber());
+                break;
+            } catch (IllegalArgumentException e) {
+                OutputView.printError(e.getMessage());
+            }
+        }
+
+        if (feature.isExit()) {
+            return;
+        }
+
         final List<Table> tables = TableRepository.tables();
         OutputView.printTables(tables);
 
-        final int tableNumber = InputView.inputTableNumber();
-
         final List<Menu> menus = MenuRepository.menus();
-        OutputView.printMenus(menus);
+
+        int tableNumber;
+
+        if (feature.isOrder()) {
+            tableNumber = InputView.inputTableNumber();
+            OutputView.printMenus(menus);
+        }
+
+        if (feature.isPay()) {
+            tableNumber = InputView.inputTableNumber();
+            OutputView.printMenus(menus);
+        }
     }
 }
