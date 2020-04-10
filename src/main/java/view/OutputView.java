@@ -1,5 +1,6 @@
 package view;
 
+import domain.Feature;
 import domain.Menu;
 import domain.Table;
 
@@ -9,6 +10,14 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+
+    public static void printFeatures() {
+        System.out.println("## 메인화면");
+        for (Feature feature : Feature.values()) {
+            System.out.println(feature.getName());
+        }
+        System.out.println();
+    }
 
     public static void printTables(final List<Table> tables) {
         System.out.println("## 테이블 목록");
@@ -35,6 +44,11 @@ public class OutputView {
         for (final Table table : tables) {
             System.out.printf(TABLE_FORMAT, table);
         }
+        System.out.println();
+    }
+
+    public static void printError(String message) {
+        System.out.println(message);
         System.out.println();
     }
 }
