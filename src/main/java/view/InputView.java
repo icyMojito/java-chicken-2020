@@ -24,4 +24,8 @@ public class InputView {
         System.out.println("## 메뉴의 수량을 입력하세요");
         return scanner.nextLine();
     }
+
+    public static String inputPayMethodNumber() {
+        return scanner.nextLine();
+    }
 }
