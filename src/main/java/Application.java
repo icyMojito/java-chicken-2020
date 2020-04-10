@@ -27,10 +27,11 @@ public class Application {
 
         final List<Menu> menus = MenuRepository.menus();
 
-        TableNumber tableNumber;
+        Table table;
         while (true) {
             try {
-                tableNumber = TableNumber.of(InputView.inputTableNumber());
+                String tableNumber = InputView.inputTableNumber();
+                table = TableRepository.find(tableNumber);
                 break;
             } catch (IllegalArgumentException e) {
                 OutputView.printError(e.getMessage());
