@@ -27,16 +27,22 @@ public class Application {
 
         final List<Menu> menus = MenuRepository.menus();
 
-        int tableNumber;
+        TableNumber tableNumber;
+        while (true) {
+            try {
+                tableNumber = TableNumber.of(InputView.inputTableNumber());
+                break;
+            } catch (IllegalArgumentException e) {
+                OutputView.printError(e.getMessage());
+            }
+        }
+
+        OutputView.printMenus(menus);
 
         if (feature.isOrder()) {
-            tableNumber = InputView.inputTableNumber();
-            OutputView.printMenus(menus);
         }
 
         if (feature.isPay()) {
-            tableNumber = InputView.inputTableNumber();
-            OutputView.printMenus(menus);
         }
     }
 }
