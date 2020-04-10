@@ -1,9 +1,10 @@
 package domain;
 
+import java.util.Map;
+
 public class Table {
     private final int number;
-    private Menu menu;
-    private MenuCount menuCount;
+    private Map<Menu, MenuCount> menus;
 
     public Table(final int number) {
         this.number = number;
@@ -31,11 +32,10 @@ public class Table {
     }
 
     public void saveOrder(Menu menu, MenuCount menuCount) {
-        this.menu = menu;
-        this.menuCount = menuCount;
+        this.menus.put(menu, menuCount);
     }
 
     public boolean hasOrder() {
-        return menu != null && menuCount != null;
+        return this.menus.size() != 0;
     }
 }
