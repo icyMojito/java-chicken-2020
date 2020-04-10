@@ -2,6 +2,8 @@ package domain;
 
 public class Table {
     private final int number;
+    private Menu menu;
+    private MenuCount menuCount;
 
     public Table(final int number) {
         this.number = number;
@@ -26,5 +28,10 @@ public class Table {
         int inputValue = getNumberValue(input);
 
         return this.number == inputValue;
+    }
+
+    public void saveOrder(Menu menu, MenuCount menuCount) {
+        this.menu = menu;
+        this.menuCount = menuCount;
     }
 }
